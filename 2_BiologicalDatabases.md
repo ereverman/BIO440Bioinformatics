@@ -10,6 +10,7 @@
 
 
 ## Timeline:
+
 * Starting off with the Atlas of Protein Sequence and Structure, databases were in print format
 * Accumulation of data made this unfeasible
 * Computing and the Internet made online repositories possible
