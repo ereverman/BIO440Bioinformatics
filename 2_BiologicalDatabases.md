@@ -80,6 +80,15 @@
   * Summarizes annotations for this sequence. Post translational modification section is expanded
   * Can see protein sequence variants that have been documented so far, and can click on individual ones to get a snapshot of what they do.
   * Variant 351 is assocaited with multiple sclerosis
-  
-  
-  
+   
+## Reference Genome databases:
+* ensembl.org
+* scroll down to see the "sister sites" with data for other species (non-vertebrate)
+* Downloads
+* FTP download (File Transfer Protocol)
+* Opens a list of organisms with multiple genome and other files associated with each
+
+## FlyBase:
+* flybase.org
+* Downloads --> current release --> current ftp repository 
+* Navigate to the file you need and copy the link for a wget protocol (or curl)
