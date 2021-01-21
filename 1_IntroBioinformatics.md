@@ -6,7 +6,7 @@
 * Code should be:
   * Well-commented
   * Modular
-  * Human-readable
+  * Human-readable variables and file names
   
 ### Example:
 * Bioinformatics projects are complex and have several sources of input and output files
@@ -45,6 +45,7 @@ tree VariantCalling2
 
 
 ## Use existing libraries or environments when possible:
+* A computing environment is a place on your computer (or your remote computer) where all the software and packages you installed exist
 * Many packages and tools require dependencies (other packages and tools) in order to run
 * Installing tools over and over again can take time, sometimes hours
 * Environments with packages and tools already loaded can save time 
