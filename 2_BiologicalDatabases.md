@@ -59,7 +59,10 @@
 
 * Finally the sequence with some stats on how many of each nucleotide is present
   * 60 bases per row 
-  
+
+
+# Monday, Jan 25:
+
 ## Go to Uniprot
 * uniprot.org
 * combines resources from Swiss-Prot, TrEMBL, and the Protein Information Reousrce Protein Sequence Database
@@ -81,7 +84,9 @@
   * Summarizes annotations for this sequence. Post translational modification section is expanded
   * Can see protein sequence variants that have been documented so far, and can click on individual ones to get a snapshot of what they do.
   * Variant 351 is assocaited with multiple sclerosis
-   
+
+
+# Removed from lecture:
 ## Reference Genome databases:
 * ensembl.org
 * scroll down to see the "sister sites" with data for other species (non-vertebrate)
@@ -93,3 +98,12 @@
 * flybase.org
 * Downloads --> current release --> current ftp repository 
 * Navigate to the file you need and copy the link for a wget protocol (or curl)
+
+
+
+
+## Online/GUI Bioinformatics Tools:
+* Databases often have web-based tools that can perform small-scale bioinformatics analyses
+* A slew of other online tools have been developed to fill the needs:
+ * to provide users a quick way to access and analyze deposited data
+ * to support biologists with diverse levels of computing experience
