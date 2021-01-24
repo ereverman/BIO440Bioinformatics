@@ -105,5 +105,5 @@
 ## Online/GUI Bioinformatics Tools:
 * Databases often have web-based tools that can perform small-scale bioinformatics analyses
 * A slew of other online tools have been developed to fill the needs:
- * to provide users a quick way to access and analyze deposited data
- * to support biologists with diverse levels of computing experience
+  * to provide users a quick way to access and analyze deposited data
+  * to support biologists with diverse levels of computing experience
