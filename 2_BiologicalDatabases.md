@@ -157,3 +157,7 @@ https://open.oregonstate.education/computationalbiology/chapter/command-line-bla
 
 
 # So what does bioinformatics gain us?
+* Depending on your source of data (what species, are you generating it yourself or using already deposited data) your interactions with databases and online tools will vary
+* Use of tools like BLAST can be great for starting off a new project, getting ideas for question generation and for analyzing results after you have completed your data clean up and larger bioinformatic analyses
+  * when you have identified genes that have a snp or that are highly expressed
+  * BLAST and GO analyses can be useful in understanding what your data mean in a biological context rather than a computational context.
