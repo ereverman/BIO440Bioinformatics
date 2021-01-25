@@ -107,3 +107,53 @@
 * A slew of other online tools have been developed to fill the needs:
   * to provide users a quick way to access and analyze deposited data
   * to support biologists with diverse levels of computing experience
+  * Many are free to use and have a simple graphical user interface
+  * Other tools have additional capabilities when used in the command line.
+* Typically, online tools are built using the tools we will learn to use in the command line
+
+## BLAST:
+https://open.oregonstate.education/computationalbiology/chapter/command-line-blast/#return-footnote-34-1
+* Basic Local Alignment Search Tool
+* typically uses fasta formatted files
+* Looks for matching sequence regions between the query and subject sets:
+
+## Running BLAST:
+* BLASTN (Nucleotide BLAST): compares nucleotide query with a database of nucleotide sequences
+* Define the query sequence:
+  * paste in raw sequence
+  * paste in a fasta file
+  * enter an NCBI identifier (preferred method to keep track of searches)
+* Search AF287139
+* Click off align two or more sequences
+* Choose the database: Standard database (NR indicates nonredundant, although a little bit of a misnomer because the database is no longer screened against redundant sequences)
+* Choose blastn
+* BLAST pulls the sequence from NCBI databases to use as the Query sequence
+* Next, decide on parameters for your search:
+  * Number of results (matches) to output
+  * Automatic adjustment for short sequence queries
+  * Expected number of change matches. Lower thresholds are more stringent
+  * Seed word size (can go as low as 7)
+  * Scoring parameters:
+    * Reward and Penalty for nucleotide programs like BLASTN
+    * reward is for a match, penalty is for a mismatch
+    * Can be adjusted based on the expected level of sequence similarity:
+    * If sequences are highly conserved may choose to have a higher penalty for mismatches (1/-3)
+    * Gap costs: a part of the megablast tool and functions similar to the match/mismatch scores but for allowing gaps in aligned sequences
+ * Filters and Masking:
+   * Low-complexity regions: masks off segments of the query sequence that are exceptionally common motifs for reducing the number of hits for biologically uninteresting similarities during seeding
+   * Species-specific repeats: Masks repeat regions, especially useful if you are working with a species that has a notorious number of repeat regions
+   * Mask for lookup table only: includes the "biologically unintersting" regions for the extension phase of the sequence similarity search
+   * Mask lowercase letters: FASTA sequences may have lowercase letters which indicate repeat regions such as transposons
+  
+## BLAST Results:
+* Header:
+  * RID: can be used to retrieve the results for up to 24 hours
+  * Program: Version of BLAST used
+  * descriptors of the query sequence
+* Descriptions: table of each of the aligned sequences and the score of the alignment (default sorting is E value)
+  * Many of the sequences are "predicted"-- means that there isn't any experimental evidence that the sequence produces a protein. this can happen when the genome of a species is sequenced, but gene annotation is only based on computational analyses.
+* Graphic Summary: only shows alignments for 100 sequences (there may be more). color coded based on the score of the sequence alignment. can click on the alignment to see the match/mismatch between your query and subject comparison.
+
+
+
+# So what does bioinformatics gain us?
