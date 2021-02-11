@@ -84,15 +84,32 @@ ls -lh
 ## Navigating Files and Directories:
 
 * Let's get some data that we will use to practice on.
-https://github.com/kulibraries/ku-swc-files.git
+http://swcarpentry.github.io/shell-novice/data/data-shell.zip
+
+* There are two programs that will download data from a remote server to your local or remote computer
+ * wget = world wide web get, downloads web pages or data at a web address
+ * curl = "see URL", displays webpages or data at a web address
+* Typically use depends on operating system
+* First determine whether you have wget or curl installed to use:
+
+```
+which curl
+which wget
+
+# Which is a BASH program that looks through everything you have installed and tells you where it is installed.
+# no results means the searched program isn't installed
+```
 
 If need to install curl on gitbash:
 https://stackoverflow.com/questions/2710748/run-curl-commands-from-windows-console/20598096
 
 ```
-cd 
+cd Desktop
+pwd
+ls
 
 curl -O http://swcarpentry.github.io/shell-novice/data/data-shell.zip
+ls
 
 # unzip the directory
 unzip data-shell.zip
@@ -102,68 +119,24 @@ tree data-shell
 tree.com //a
 ```
 
-
-* This repository will appear in your downloads directory.
-* Open finder/folder and navigate to the downloaded directory.
-* Copy or move the directory to your Desktop.
-
-* The ls command can be used to look at the contents of other directories, not just the one you are in
-
-```
-# we just did this:
-ls
-
-# now look in one of the directories that is listed:
-ls Desktop
-
-## EXERCISE:
-# list the contents of your downloaded directory (you should see your downloaded directory).
-ls Desktop/ku-swc-files-master/
-
-```
-
 * You can continue to look into the contents of other directories as long as you follow the path through your directories.
-* Let's update our map: (powerpoint)
-* Your marker should still be on the "Me" position because we are still in our designated user directory but we are about to change that.
 
+
+* Moving around in your directory structure:
 ```
-# change directory
-cd Desktop
-pwd
-
-# to help you keep track of where you are move your marker to the desktop directory.
-
-# change directory to the data-shell directory:
-ls # what is in front of us in the tree?
-# two ways to accomplish this because our target directory is two steps down the tree.
-
-cd ku-swc-files-master
-cd data-shell
-
-cd ku-swc-files-master/data-shell
-
+# There are more short cuts: 
+cd ~ # go home
+cd - # go back to the directory we were just in
 ```
-
-* How do we return to where we came from?
-
+* the ../ is present in every directory by default and we can see it with a special flag:
 ```
-# cd can go forward and backward
-cd ku-swc-files-master
+ls -F -a
+# -a stands for show all. Normally files and directories that begin with . are hidden.
 
 # if you want to step out one level use a general shortcut:
 cd ../
 # this will move you to the parent directory
 pwd 
-# move your marker.
-```
-* the ../ is present in every directory by default and we can see it with a special flag:
-```
-ls -F -a
-
-# -a stands for show all. Normally files and directories that begin with . are hidden.
-
-ls -Fa
-# flags can be combined.
 ```
 * There is another directory ./ which means the current directory.
 * This is a useful shortcut for moving files around.
@@ -174,9 +147,10 @@ cd
 pwd
 
 ## Exercise:
-cd to the data-shell directory with one line
+# change directory (slide exercise)
+cd data-shell/writing
+pwd
 
-cd Desktop/ku-swc-files-master/data-shell
 ```
 
 ### Relative and Absolute paths (ppt)
@@ -187,7 +161,7 @@ cd Desktop/ku-swc-files-master/data-shell
  * pros: makes scripts more stable if they can find input files and output directories from anywhere in your filing system.
  * cons: they can get very long, especially if you are referencing files that are buried deep in your system. (but there are ways around this)
 
-* Two exercises.
+* Exercise.
 
 
 ### Nelle Case Study: File organization tips
