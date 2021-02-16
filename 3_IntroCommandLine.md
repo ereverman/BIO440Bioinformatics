@@ -624,18 +624,22 @@ done
 for datafile in NENE*[AB].txt
 do
 echo $datafile
+SAMPLE=$(basename ${datafile} .txt)
+echo $SAMPLE
 done
 
 # next, set up for the output files:
 for datafile in NENE*[AB].txt
 do
-echo $datafile stats-$datafile
+SAMPLE=$(basename ${datafile} .txt)
+echo $datafile $SAMPLE-stats.txt
 done
 
 # final command:
 for datafile in NENE*[AB].txt
-do echo $datafile
-bash goostats $datafile stats-$datafile
+do 
+SAMPLE=$(basename ${datafile} .txt)
+bash goostats $datafile $SAMPLE-stats.txt
 done
 
 # If you have a long list of data files, you can open another terminal window while the current process is running to check that the proper outputs are being made
@@ -668,6 +672,50 @@ mkdir $species-$temperature
 done
 done
 ```
+
+### grep
+* Regular expressions are similar to using wildcards in that they provide a way to search files for patterns
+* The same symbols are used in regular expressions as wildcards, but the function is slightly different
+
+```
+cat basilisk.dat # header lines and then several lines of sequences
+grep 'CLASSIFICATION' basilisk.dat
+
+# What line is the classification on
+grep -n 'CLASSIFICATION' basilisk.dat
+
+# How do we get the information for all of the data files at once:
+grep -n 'CLASSIFICATION' *.dat
+
+# Search for a sequence motif:
+grep 'ACT' basilisk.dat
+
+# Exercise: count the number of times "ACT" appears in each file and redirct the output to a new file
+
+grep -c 'ACT' *.dat > ACT.Counts.txt
+
+
+# Grep can be used in loops, but the behavior is slightly different:
+for FILE in *.dat
+do
+grep -c 'ACT' $FILE > ACT.Loop.txt
+done
+
+
+# Troubleshoot: what do we change?
+
+Answer:
+for FILE in *.dat
+do
+grep --with-filename -c 'ACT' $FILE >> ACTCount.txt
+done
+
+```
+
+
+
+
+
 * One final tool that you can use to look at all the commands you've run is to use history:
 ```
 history 
