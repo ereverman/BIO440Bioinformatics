@@ -151,7 +151,7 @@ ${RESULTS_DIR}
 * Transfer them to your local computer
 ```
 cd work/GeneralScripts
-curl -O https://raw.githubusercontent.com/ereverman/BIO440Bioinformatics/main/4_IntroRemoteComputing.md
+curl -O https://raw.githubusercontent.com/ereverman/BIO440Bioinformatics/main/4_AtomConnectionNotes.md
 ```
 * Return to Atom and view the file in the Remote toggle. Right click and download
 * Verify the file is in your local directory.
