@@ -64,7 +64,7 @@ readlink -f . # Use to identify a path that can be used to transfer files by tra
 * Making a directory in work allows us to specify a connection between our local and remote computers
 ```
 cd work/
-mkdir GeneralScripts
+mkdir GeneralScripts_Setup
 ```
 
 
@@ -82,7 +82,8 @@ readlink -f .
 ```
 * Open a second terminal tab or window (this one is linked to your local computer) and make a matching directory and get the path:
 ```
-mkdir GeneralScripts
+cd Desktop
+mkdir GeneralScripts_Setup
 pwd
 ```
 
@@ -95,8 +96,8 @@ pwd
     "user": "USERNAME",
     "pass": "",
     "promptForPass": true,
-    "remote": "/panfs/pfs.local/work/sjmac/USERNAME/GeneralScripts",
-    "local": "/PATH/TO/GeneralScripts",
+    "remote": "/panfs/pfs.local/work/sjmac/USERNAME/GeneralScripts_Setup",
+    "local": "/PATH/TO/GeneralScripts_Setup",
     "agent": "",
     "privatekey": "",
     "passphrase": "",
@@ -150,7 +151,7 @@ ${RESULTS_DIR}
 * Download my teaching notes from github
 * Transfer them to your local computer
 ```
-cd work/GeneralScripts
+cd work/GeneralScripts_Setup
 curl -O https://raw.githubusercontent.com/ereverman/BIO440Bioinformatics/main/4_AtomConnectionNotes.md
 ```
 * Return to Atom and view the file in the Remote toggle. Right click and download
@@ -179,7 +180,7 @@ tree.com //a BLAST_PRACTICE
 
 readlink -f ProjectTemplate.sh
 cd scratch
-sh /panfs/pfs.local/work/sjmac/USERNAME/GeneralScripts/ProjectTemplate.sh BLAST_PRACTICE
+sh /panfs/pfs.local/work/sjmac/USERNAME/GeneralScripts_Setup/ProjectTemplate.sh BLAST_PRACTICE
 ```
 * Finally make the connection between the two project directories through Atom:
 * Open a new window
