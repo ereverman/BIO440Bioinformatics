@@ -186,5 +186,10 @@ sh /panfs/pfs.local/work/sjmac/USERNAME/GeneralScripts/ProjectTemplate.sh BLAST_
 * Open a new project and make a new config file with a different path.
 
 
-
+### Logging off HPC:
+```
+exit # to close connection
+```
+* You may choose to disconnect from Cisco AnyConnect as well
+* Both processes will eventually log you out or terminate your session following inactivity.
 
