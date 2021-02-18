@@ -146,6 +146,13 @@ ${RESULTS_DIR}
 * Transfer the file by right clicking the file and selecting upload the remote and local computer.
 * Check that the file exists in your HPC connection through gitbash
 
+### Downloading a file that you created or accessed on HPC:
+* Download my teaching notes from github
+* Transfer them to your local computer
+```
+cd work
+
+
 
 ### Running the ProjectTemplate.sh:
 * Remember that whenever you set up a new project and you intend to use a remote computer for analyses, it is simplest to set up the project directories on your local and remote computer simultaneously.
@@ -159,10 +166,20 @@ cd Desktop # (or the place you want to store your BLAST directory)
 
 sh PATH/TO/ProjectTemplate.sh BLAST_PRACTICE
 tree BLAST_PRACTICE
+tree.com //a BLAST_PRACTICE
+```
+* Make a matching directory in scratch on HPC
+```
+# Keep in mind that paths are softlinked on HPC, so it's not straight forward to use relative paths.
+# Get the absolute path for ProjectTemplate.sh and copy the path
 
-
-
-* CD to scratch on HPC. This is where you will do most of your work
+readlink -f ProjectTemplate.sh
+cd scratch
+sh /panfs/pfs.local/work/sjmac/e284e911/GeneralScripts/ProjectTemplate.sh BLAST_PRACTICE
+```
+* Finally make the connection between the two project directories through Atom:
+* Open a new window
+* Open a new project and make a new config file with a different path.
 
 
 
