@@ -92,11 +92,11 @@ pwd
     "protocol": "sftp",
     "host": "hpc.crc.ku.edu",
     "port": 22,
-    "user": "e284e911",
+    "user": "USERNAME",
     "pass": "",
     "promptForPass": true,
-    "remote": "/panfs/pfs.local/work/sjmac/e284e911/GeneralScripts",
-    "local": "/Users/e284e911/Desktop/Teaching/WJC_Bioinformatics_SP2021/5_UnixRemoteComputing/GeneralScripts",
+    "remote": "/panfs/pfs.local/work/sjmac/USERNAME/GeneralScripts",
+    "local": "/PATH/TO/GeneralScripts",
     "agent": "",
     "privatekey": "",
     "passphrase": "",
@@ -179,7 +179,7 @@ tree.com //a BLAST_PRACTICE
 
 readlink -f ProjectTemplate.sh
 cd scratch
-sh /panfs/pfs.local/work/sjmac/e284e911/GeneralScripts/ProjectTemplate.sh BLAST_PRACTICE
+sh /panfs/pfs.local/work/sjmac/USERNAME/GeneralScripts/ProjectTemplate.sh BLAST_PRACTICE
 ```
 * Finally make the connection between the two project directories through Atom:
 * Open a new window
