@@ -61,6 +61,7 @@ readlink -f . # Use to identify a path that can be used to transfer files by tra
 * First we need to create a file that we want to transfer to our remote computer.
 * We will create a ProjectTemplate.sh script that can be customized for new projects
 * We want this script to be kept from purges, so we will store it in our work directory 
+* Making a directory in work allows us to specify a connection between our local and remote computers
 ```
 cd work/
 mkdir GeneralScripts
@@ -72,4 +73,97 @@ mkdir GeneralScripts
 * Open Atom and navigate to a single untitled script.
 * File --> Add Project Folder --> (Navigate to where you want the matching GeneralScripts directory) New Folder --> "GeneralScripts" --> Open
 * File --> Open --> GeneralScripts (Side bar should change to show directory and contents)
-* Open a second terminal tab or window (this one is linked to your local computer
+* Packages --> Remote FTP --> Create SFTP Config File
+  * If you don't have the Remote FTP plugin, install from here: https://atom.io/packages/search?q=ftp
+  * May need to restart the project
+* Once you have a new .ftpconfig file, go to remote work directory and get the path:
+```
+readlink -f .
+```
+* Open a second terminal tab or window (this one is linked to your local computer) and make a matching directory and get the path:
+```
+mkdir GeneralScripts
+pwd
+```
+
+* Change host, user, pass, promptForPass, remote, local:
+```
+{
+    "protocol": "sftp",
+    "host": "hpc.crc.ku.edu",
+    "port": 22,
+    "user": "e284e911",
+    "pass": "",
+    "promptForPass": true,
+    "remote": "/panfs/pfs.local/work/sjmac/e284e911/GeneralScripts",
+    "local": "/Users/e284e911/Desktop/Teaching/WJC_Bioinformatics_SP2021/5_UnixRemoteComputing/GeneralScripts",
+    "agent": "",
+    "privatekey": "",
+    "passphrase": "",
+    "hosthash": "",
+    "ignorehost": true,
+    "connTimeout": 10000,
+    "keepalive": 10000,
+    "keyboardInteractive": false,
+    "keyboardInteractiveForPass": false,
+    "remoteCommand": "",
+    "remoteShell": "",
+    "watch": [],
+    "watchTimeout": 500
+}
+```
+* This file allows us to establish a connection.
+* Activate the connection:
+* Packages --> Remote FTP --> Toggle
+* This opens a new tab in Atom. Click the tab and then click connect, enter your KU password. You should now be able to see the contents of your GeneralScripts directory.
+
+
+### Make a file that allows us to set up project directories:
+* Open a new file in Atom in your local directory.
+```
+# Project directory template
+
+# Instructions:
+# Usage: sh ProjectTemplate.sh PROJECT_NAME
+# Parent directory does not need to exist prior to running script
+# Run script in the directory you want to create the new project directory
+
+# Assign Project Variable:
+# ${1} receives the PROJECT_NAME argument
+PROJECT_DIR=${1}
+
+
+# Assign Project Subdirectory Variables:
+DATA_DIR=${PROJECT_DIR}/data
+RESULTS_DIR=${PROJECT_DIR}/results
+
+
+# Make the directories:
+mkdir -p ${PROJECT_DIR} \
+${DATA_DIR} \
+${RESULTS_DIR}
+```
+* Transfer the file by right clicking the file and selecting upload the remote and local computer.
+* Check that the file exists in your HPC connection through gitbash
+
+
+### Running the ProjectTemplate.sh:
+* Remember that whenever you set up a new project and you intend to use a remote computer for analyses, it is simplest to set up the project directories on your local and remote computer simultaneously.
+* As you get more familiar with your preferred method for organizing data, your ProjectTemplate.sh will grow as you make changes and additional directories.
+* Our first case study on using command line BLAST is coming up, so let's make a project directory for that project
+
+
+* On your local computer:
+```
+cd Desktop # (or the place you want to store your BLAST directory)
+
+sh PATH/TO/ProjectTemplate.sh BLAST_PRACTICE
+tree BLAST_PRACTICE
+
+
+
+* CD to scratch on HPC. This is where you will do most of your work
+
+
+
+
