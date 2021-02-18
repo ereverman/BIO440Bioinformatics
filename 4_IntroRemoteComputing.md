@@ -150,7 +150,11 @@ ${RESULTS_DIR}
 * Download my teaching notes from github
 * Transfer them to your local computer
 ```
-cd work
+cd work/GeneralScripts
+curl -O https://raw.githubusercontent.com/ereverman/BIO440Bioinformatics/main/4_IntroRemoteComputing.md
+```
+* Return to Atom and view the file in the Remote toggle. Right click and download
+* Verify the file is in your local directory.
 
 
 
