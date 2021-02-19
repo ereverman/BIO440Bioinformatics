@@ -34,6 +34,8 @@ conda activate blast_env
 ```
 # install blast with bioconda:
 conda install -c bioconda blast --yes
+ls
+# you still have access to your directory system and can save files as usual
 ```
 
 * To check what conda environments exist:
@@ -60,3 +62,126 @@ conda list
 * Create a spec list file that can be shared with collaborators or that can be used to recreate the exact environment:
 ```
 conda list --explicit > ~/Desktop/GeneralScripts_Setup/blast-spec-file.txt
+cat ~/Desktop/GeneralScripts_Setup/blast-spec-file.txt
+
+conda create -n blast-copy --file ~/Desktop/GeneralScripts_Setup/blast-spec-file.txt
+conda install -n blast-copy --file ~/Desktop/GeneralScripts_Setup/blast-spec-file.txt
+# Conda doesn't run checks when installing from a spec file
+# Method isn't perfect and can be susceptible to differences in operating system
+# Not the preferred method for working on HPC because the architecture of the computing systems are so different
+```
+
+### Using conda on KU HPC:
+* The same major guidelines apply with some upfront modifications
+* You need access to where conda environments are stored
+```
+module load anaconda
+# similar to loading a package in R in order to access tools
+
+conda info --envs
+
+# Create a condarc file:
+cd 
+ls -lha
+
+# Move to scratch
+cd scratch
+conda create -n blast-env --yes # takes a while for this to complete, complete for prep homework
+
+
+# Contents of the .condarc file:
+# This is a sample .condarc file.
+# It adds the r Anaconda.org channel and enables
+# the show_channel_urls option.
+
+# channel locations. These override conda defaults, i.e., conda will
+# search *only* the channels listed here, in the order given.
+# Use "defaults" to automatically include all default channels.
+# Non-url channels will be interpreted as Anaconda.org usernames
+# (this can be changed by modifying the channel_alias key; see below).
+# The default is just 'defaults'.
+channels:
+  - conda-forge
+  - bioconda
+  - anaconda
+  - defaults
+
+# Show channel URLs when displaying what is going to be downloaded
+# and in 'conda list'. The default is False.
+show_channel_urls: None
+
+# For more information about this file see:
+# https://conda.io/docs/user-guide/configuration/use-condarc.html
+
+envs_dirs:
+  - /panfs/pfs.local/work/sjmac/software/conda_envs
+  - /panfs/pfs.local/software/install/anaconda/4.3.11/envs
+
+pkgs_dirs:
+ - /panfs/pfs.local/work/sjmac/software/conda_envs/pkgs
+```
+
+
+# Blast
+* Basic Local Alignment Search Tool
+* Identifies regions of similarity between biological sequences.
+* We created a blast directory last time, move to that directory
+```
+cd ~/Desktop/BLAST_PRACTICE/data
+ls 
+
+# Download data.
+# These files are mouse and zebrafish RefSeq protein datasets from NCBI
+
+
+curl -O ftp://ftp.ncbi.nih.gov/refseq/M_musculus/mRNA_Prot/mouse.1.protein.faa.gz
+curl -O ftp://ftp.ncbi.nih.gov/refseq/R_norvegicus/mRNA_Prot/rat.1.protein.faa.gz
+curl -O ftp://ftp.ncbi.nih.gov/refseq/X_tropicalis/mRNA_Prot/frog.1.protein.faa.gz
+curl -O ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz
+
+# Each file is compressed.
+gunzip *.faa.gz
+
+# Preview one of the files:
+head mouse.1.protein.faa
+# fasta formatted protein sequences
+
+```
+
+### Blast exercise 1:
+* Compare the first two protein sequences in mouse.1.protein.faa against the zebrafish protein data set.
+```
+# First make a database using the zebrafish data:
+
+makeblastdb -in zebrafish.1.protein.faa -dbtype prot
+# generates additional files that have been indexed to facilitate faster searches for sequence similarity
+
+# Second make a smaller subset file to hold example data:
+head -n 11 mouse.1.protein.faa > mm-test.faa
+
+# Third call blast to do the search:
+
+# View options:
+blastp -help
+
+blastp -query mm-test.faa -db zebrafish.1.protein.faa -outfmt 7 -out ../results/mm-test.x.zebrafish.txt
+ls ../mm-test.x.zebrafish.txt
+less ../mm-test.x.zebrafish.txt
+
+# Fourth, write a loop that will generate full results for each file comparison:
+
+# Run BLASTP
+# my solution:
+mkdir ../scripts
+mkdir reference
+mv zebrafish* reference/
+
+for FILE in ~/Desktop/BLAST_PRACTICE/data/*.protein.faa
+do 
+echo $FILE
+SAMPLE=$(basename ${FILE} .1.protein.faa)
+blastp -query ${FILE} \
+-db ~/Desktop/BLAST_PRACTICE/zebrafish.1.protein.faa \
+-outfmt 7 \
+-out ~/DESKTOP/BLAST_PRACTICE/results/${SAMPLE}.x.zebrafish.txt
+done
