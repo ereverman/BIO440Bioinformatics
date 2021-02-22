@@ -125,14 +125,15 @@ pkgs_dirs:
 # Blast
 * Basic Local Alignment Search Tool
 * Identifies regions of similarity between biological sequences.
-* We created a blast directory last time, move to that directory
+* Use ProjectTemplate.sh to generate a new directory: Blast_Example
 ```
-cd ~/Desktop/BLAST_PRACTICE/data
+sh GeneralScripts_Setup/ProjectTemplate.sh Blast_Example
+
+cd ~/Desktop/Blast_Example/data
 ls 
 
-# Download data.
+# Download data from NCBI
 # These files are mouse and zebrafish RefSeq protein datasets from NCBI
-
 
 curl -O ftp://ftp.ncbi.nih.gov/refseq/M_musculus/mRNA_Prot/mouse.1.protein.faa.gz
 curl -O ftp://ftp.ncbi.nih.gov/refseq/R_norvegicus/mRNA_Prot/rat.1.protein.faa.gz
@@ -145,7 +146,6 @@ gunzip *.faa.gz
 # Preview one of the files:
 head mouse.1.protein.faa
 # fasta formatted protein sequences
-
 ```
 
 ### Blast exercise 1:
@@ -168,6 +168,13 @@ blastp -query mm-test.faa -db zebrafish.1.protein.faa -outfmt 7 -out ../results/
 ls ../mm-test.x.zebrafish.txt
 less ../mm-test.x.zebrafish.txt
 
+
+
+
+
+
+
+
 # Fourth, write a loop that will generate full results for each file comparison:
 
 # Run BLASTP
@@ -185,3 +192,22 @@ blastp -query ${FILE} \
 -outfmt 7 \
 -out ~/DESKTOP/BLAST_PRACTICE/results/${SAMPLE}.x.zebrafish.txt
 done
+```
+
+### Analyzing results:
+* Tab-formated data can be easilty read into R:
+```
+library(ggplot2)
+
+mouse <- read.table("blast_test/results/mm-100.x.zebrafish.txt", header = FALSE)
+head(mouse)
+colnames(mouse) <- c("query","subject","pct.identity","alignment.length","mismatches",
+                     "gap.opens","q.start","q.end","s.start","s.end","evalue","bit.score")
+
+
+head(mouse)
+hist(mouse$evalue)
+hist(mouse$pct.identity)
+
+mouse.high.pct.identity <- subset(mouse, pct.identity  > 80)
+```
