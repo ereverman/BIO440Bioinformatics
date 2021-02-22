@@ -70,6 +70,13 @@ conda install -n blast-copy --file ~/Desktop/GeneralScripts_Setup/blast-spec-fil
 # Method isn't perfect and can be susceptible to differences in operating system
 # Not the preferred method for working on HPC because the architecture of the computing systems are so different
 ```
+* Removing conda environments:
+```
+conda remove --name blast-copy --all
+
+# Prompts for verification
+conda info --envs
+```
 
 ### Using conda on KU HPC:
 * The same major guidelines apply with some upfront modifications
