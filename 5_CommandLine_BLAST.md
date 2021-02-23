@@ -3,8 +3,23 @@
 * We can use additional tools to help streamline the installation process
 
 ## Conda
-* powerful package manager and environment manager that you can use at the Anaconda prompt (windows) or teminal (mac)
-* Search for anaconda prompt on windows from the start menu
+* powerful package manager and environment manager that you can use in gitbash or terminal.
+
+
+* First, we need to establish a connection between anaconda code and gitbash.
+
+```
+cd ~
+ls # look for anaconda3/
+
+cd anaconda3/etc/profile.d
+ls # We need a copy of the conda.sh script in our ~/.bash_profile file
+
+echo ". ${PWD}/conda.sh" >> ~/.bash_profile
+
+# close and reopen gitbash for the change to take effect
+```
+
 * Verify that conda is installed:
 ```
 conda --version
@@ -14,7 +29,20 @@ conda --version
   * Creating separate environments that cater to specific analyses
   * Avoiding discrepancies between incompatible packages (python 2 vs 3)
   * Creating a snapshot of the versions of software used in an analysis.
-* Create a new environment for BLAST:
+* Go here to check for packages: https://anaconda.org/anaconda/repo
+* There isn't a blast package available for windows (and many other genomics packages) so we will make a practice environment
+
+* Create a new environment for python2.7:
+
+
+
+
+
+
+
+
+
+
 ```
 conda create -n blast_env --yes
 # provides information on where to find your conda environments
