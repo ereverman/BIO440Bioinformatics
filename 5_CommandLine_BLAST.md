@@ -1,3 +1,8 @@
+change command prompt:
+```
+PS1='\w $ '
+
+```
 ### BLAST and Working with Conda Environments
 * Installing software and tools used in bioinformatics projects can be nearly as complex as running the analyses themselves.
 * We can use additional tools to help streamline the installation process
@@ -35,9 +40,10 @@ conda --version
 * Create a new environment for python2.7:
 
 
+```
+conda create --name python2.7 python=2.7
 
-
-
+```
 
 
 
