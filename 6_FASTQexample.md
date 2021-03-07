@@ -7,8 +7,8 @@ mkdir fastq-example
 cd fastq-example
 
 curl -O https://raw.githubusercontent.com/vsbuffalo/bds-files/master/chapter-10-sequence/untreated1_chr4.fq
-curl -O https://raw.githubusercontent.com/vsbuffalo/bds-files/master/chapter-10-sequence/nuccount.py
-curl -O https://raw.githubusercontent.com/vsbuffalo/bds-files/master/chapter-10-sequence/readfq.py
+curl -O https://raw.githubusercontent.com/ereverman/BIO440Bioinformatics/main/nuccount_edit.py
+curl -O https://raw.githubusercontent.com/ereverman/BIO440Bioinformatics/main/readfq_edit.py
 
 # Counting lines is not as simple as with fasta files:
 
